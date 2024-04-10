@@ -1,0 +1,8 @@
+country:
+  name: Марокко
+  economic:
+    rate:
+      basic: 5
+      higher: 6
+    currency: дирхам
+

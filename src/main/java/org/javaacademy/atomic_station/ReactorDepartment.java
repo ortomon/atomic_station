@@ -14,12 +14,12 @@ import java.math.BigDecimal;
 @Component
 @RequiredArgsConstructor
 public class ReactorDepartment {
-    private static final BigDecimal POWER_GENERATION_IN_ONE_DAY = BigDecimal.valueOf(10_000_000);
+    private static final long POWER_GENERATION_IN_ONE_DAY = 10_000_000L;
     private boolean isWork;
     private int counter = 0;
     private final SecurityDepartment securityDepartment;
 
-    public BigDecimal run() {
+    public long run() {
         counter++;
 
         if (isWork) {

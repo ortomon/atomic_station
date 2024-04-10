@@ -1,7 +1,9 @@
 package org.javaacademy.atomic_station;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.javaacademy.atomic_station.economy.EconomicDepartment;
 import org.javaacademy.atomic_station.exception.NuclearFuelIsEmptyException;
 import org.javaacademy.atomic_station.exception.ReactorWorkException;
 import org.javaacademy.atomic_station.security.SecurityDepartment;
@@ -16,12 +18,18 @@ import static java.math.BigDecimal.ZERO;
 @Component
 public class NuclearStation {
     private static final int DAYS_YEAR = 365;
+    @NonNull
     private final ReactorDepartment reactorDepartment;
+    @NonNull
     private final SecurityDepartment securityDepartment;
-    private BigDecimal totalCountEnergyGenerated = ZERO;
+    @NonNull
+    private final EconomicDepartment economicDepartment;
+    private long totalCountEnergyGenerated;
     private int accidentCountAllTime;
 
     public void start(int year) {
+        log.info("Действие происходит в стране: {}", economicDepartment.getCountryName());
+
         for (int i = 0; i < year; i++) {
             startYear();
         }
@@ -30,15 +38,15 @@ public class NuclearStation {
     private void startYear() {
         log.info("Атомная станция начала работу.");
         int dayCounter = 0;
-        BigDecimal countEnergyGenerated = ZERO;
+        long countEnergyGeneratedInYear = 0L;
 
         while (dayCounter < DAYS_YEAR) {
-            BigDecimal temp;
+            long temp;
 
             try {
                 temp = reactorDepartment.run();
             } catch (ReactorWorkException | NuclearFuelIsEmptyException e) {
-                temp = ZERO;
+                temp = 0L;
                 log.warn("Внимание! Происходят работы на атомной станции! Электричества нет!");
             } finally {
                 try {
@@ -48,11 +56,13 @@ public class NuclearStation {
                 }
             }
 
-            countEnergyGenerated = countEnergyGenerated.add(temp);
+            countEnergyGeneratedInYear += temp;
             dayCounter++;
         }
 
-        totalCountEnergyGenerated = totalCountEnergyGenerated.add(countEnergyGenerated);
+        totalCountEnergyGenerated += countEnergyGeneratedInYear;
+        BigDecimal yearIncomes = economicDepartment.computeYearIncomes(countEnergyGeneratedInYear);
+        String currency = economicDepartment.getCurrency();
         int accidentCountPeriod = securityDepartment.getAccidentCountPeriod();
         securityDepartment.reset();
         String result =
@@ -60,7 +70,12 @@ public class NuclearStation {
                 Атомная станция закончила работу. За год Выработано %s киловатт/часов.
                 Количество инцидентов за год: %s
                 Количество инцидентов за всю работу станции: %s
-                """.formatted(countEnergyGenerated, accidentCountPeriod, accidentCountAllTime);
+                Доход за год составил %s %s
+                """.formatted(countEnergyGeneratedInYear,
+                        accidentCountPeriod,
+                        accidentCountAllTime,
+                        yearIncomes,
+                        currency);
         log.info(result);
     }
 
