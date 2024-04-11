@@ -1,26 +1,26 @@
-package org.javaacademy.atomic_station;
+package org.javaacademy.atomic_station.nuclearstation;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.javaacademy.atomic_station.exception.NuclearFuelIsEmptyException;
-import org.javaacademy.atomic_station.exception.ReactorWorkException;
+import org.javaacademy.atomic_station.nuclearstation.exception.NuclearFuelIsEmptyException;
+import org.javaacademy.atomic_station.nuclearstation.exception.ReactorWorkException;
 import org.javaacademy.atomic_station.security.SecurityDepartment;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 
 /**
  * реакторный цех
  */
 @Component
 @RequiredArgsConstructor
+@Getter
 public class ReactorDepartment {
-    private static final long POWER_GENERATION_IN_ONE_DAY = 10_000_000L;
+    public static final long POWER_GENERATION_IN_ONE_DAY = 10_000_000L;
     private boolean isWork;
-    private int counter = 0;
+    private int counterOfRuns = 0;
     private final SecurityDepartment securityDepartment;
 
     public long run() {
-        counter++;
+        counterOfRuns++;
 
         if (isWork) {
             securityDepartment.addAccident();
@@ -45,8 +45,12 @@ public class ReactorDepartment {
         isWork = false;
     }
 
+    public void countRunsReset() {
+        counterOfRuns = 0;
+    }
+
     private boolean isHundredthRun() {
-        return counter % 100 == 0;
+        return counterOfRuns % 100 == 0;
     }
 }
 

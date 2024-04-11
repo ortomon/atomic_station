@@ -1,7 +1,7 @@
 package org.javaacademy.atomic_station.security;
 
 import lombok.Getter;
-import org.javaacademy.atomic_station.NuclearStation;
+import org.javaacademy.atomic_station.nuclearstation.NuclearStation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

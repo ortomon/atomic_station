@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.valueOf;
+
 @Profile("morocco")
 @Component
 public class MoroccoEconomicDepartment extends EconomicDepartment {
@@ -20,11 +22,11 @@ public class MoroccoEconomicDepartment extends EconomicDepartment {
 
         if (countElectricity > COUNT_ELECTRICITY_BASIC_RATE) {
             long remainder = countElectricity - COUNT_ELECTRICITY_BASIC_RATE;
-            totalIncome = BigDecimal.valueOf(COUNT_ELECTRICITY_BASIC_RATE)
+            totalIncome = valueOf(COUNT_ELECTRICITY_BASIC_RATE)
                     .multiply(basicRate)
-                    .add(BigDecimal.valueOf(remainder).multiply(higherRate));
+                    .add(valueOf(remainder).multiply(higherRate));
         } else {
-            totalIncome = BigDecimal.valueOf(COUNT_ELECTRICITY_BASIC_RATE).multiply(basicRate);
+            totalIncome = valueOf(COUNT_ELECTRICITY_BASIC_RATE).multiply(basicRate);
         }
 
         return totalIncome;

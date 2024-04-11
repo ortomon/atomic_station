@@ -13,7 +13,7 @@ public abstract class EconomicDepartment {
     private String countryName;
     @Value("${country.economic.currency}")
     private String currency;
-    @Value("${country.economic.rate}")
+    @Value("${country.economic.rate.basic}")
     protected BigDecimal basicRate;
 
     public abstract BigDecimal computeYearIncomes(long countElectricity);
