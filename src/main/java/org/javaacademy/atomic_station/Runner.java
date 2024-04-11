@@ -9,9 +9,7 @@ import org.springframework.context.ApplicationContext;
 public class Runner {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(Runner.class, args);
-		NuclearStation nuclearStation = context.getBean(NuclearStation.class);
-		nuclearStation.start(3);
+		SpringApplication.run(Runner.class, args);
 	}
 
 }

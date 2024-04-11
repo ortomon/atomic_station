@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@ActiveProfiles("france")
+@ActiveProfiles("morocco")
 class SecurityDepartmentApplicationTests {
 	@Autowired
 	private SecurityDepartment securityDepartment;

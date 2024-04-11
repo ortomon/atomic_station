@@ -12,8 +12,8 @@ import static java.math.BigDecimal.*;
 @Profile("france")
 @Component
 public class FranceEconomicDepartment extends EconomicDepartment {
-    private static final BigDecimal DISCOUNT_RATE = valueOf(0.01);
-    private static final long COUNT_ELECTRICITY_BASIC_RATE = 1_000_000_000L;
+    public static final BigDecimal DISCOUNT_RATE = valueOf(0.01);
+    public static final long COUNT_ELECTRICITY_BASIC_RATE = 1_000_000_000L;
 
     @Override
     public BigDecimal computeYearIncomes(long countElectricity) {

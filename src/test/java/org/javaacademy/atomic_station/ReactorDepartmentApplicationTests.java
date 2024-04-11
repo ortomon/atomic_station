@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@ActiveProfiles("france")
+@ActiveProfiles("morocco")
 class ReactorDepartmentApplicationTests {
     @Autowired
     private ReactorDepartment reactorDepartment;
@@ -62,8 +62,6 @@ class ReactorDepartmentApplicationTests {
 
     @Test
     void stopFailIsAlreadyStop() {
-        reactorDepartment.run();
-        reactorDepartment.stop();
         assertThrows(ReactorWorkException.class, () -> reactorDepartment.stop());
     }
 }

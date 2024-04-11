@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @Component
 @Getter
 public class NuclearStation {
-    private static final int DAYS_YEAR = 365;
+    public static final int DAYS_YEAR = 365;
     @NonNull
     private final ReactorDepartment reactorDepartment;
     @NonNull

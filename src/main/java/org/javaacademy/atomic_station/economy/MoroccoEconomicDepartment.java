@@ -12,7 +12,7 @@ import static java.math.BigDecimal.valueOf;
 @Profile("morocco")
 @Component
 public class MoroccoEconomicDepartment extends EconomicDepartment {
-    private static final long COUNT_ELECTRICITY_BASIC_RATE = 5_000_000_000L;
+    public static final long COUNT_ELECTRICITY_BASIC_RATE = 5_000_000_000L;
     @Value("${country.economic.rate.higher}")
     private BigDecimal higherRate;
 
