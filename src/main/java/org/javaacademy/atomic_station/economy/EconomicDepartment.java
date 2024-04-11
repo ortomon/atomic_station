@@ -1,8 +1,6 @@
 package org.javaacademy.atomic_station.economy;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.math.BigDecimal;

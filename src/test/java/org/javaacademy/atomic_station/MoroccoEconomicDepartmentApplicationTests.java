@@ -1,15 +1,12 @@
 package org.javaacademy.atomic_station;
 
-import org.javaacademy.atomic_station.economy.FranceEconomicDepartment;
 import org.javaacademy.atomic_station.economy.MoroccoEconomicDepartment;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import javax.crypto.Mac;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import static java.math.BigDecimal.valueOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -2,7 +2,6 @@ package org.javaacademy.atomic_station;
 
 import org.javaacademy.atomic_station.nuclearstation.NuclearStation;
 import org.javaacademy.atomic_station.security.SecurityDepartment;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
